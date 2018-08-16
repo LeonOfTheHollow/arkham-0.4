@@ -46,7 +46,7 @@ const liveGames = [];
 
 console.log(io);
 
-io.on('connection', function(socket) {
+io.sockets.on('connection', function(socket) {
   console.log("Got a socket conn: ", socket);
 })
 

@@ -51,7 +51,11 @@ export const openSocket = (gameId) => {
       console.log("Created a socket: ", socket);
       socket.on('connect', function() {
         console.log("The socket opened: ", socket);
-        dispatch({ type: OPENED_SOCKET, payload: socket })
+        dispatch({ type: OPENED_SOCKET, payload: socket });
+      });
+      socket.on('message', function(data) {
+        console.log("A message came in on the socket: ", data);
+        dispatch({ type: SOCKET_MSG, payload: data });
       })
       return socket;
     } catch(e) {
